@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script src="scripts/react.js"></script>
+<script src="scripts/JSXTransformer.js"></script>
+<div class="container">
+	<div id="myDiv"></div>
+</div>
+<script type="text/jsx">
+	
+	var SearchComponent = React.createClass({
+		getInitialState:function(){
+			return{
+				seachString :'',
+				libraries:[
+					'angular',
+					'backbone',
+					'c3',
+					'd3',
+					'ember',
+					'flow',
+					'react',
+					'jquery',
+					'extjs'
+				]
+			}
+		},
+		changeHandler:function(e){
+			var newText = e.target.value;
+			this.setState({
+				seachString:newText
+			})
+		},
+		render:function(){
+			var libraries = this.state.libraries;
+			var seachString = this.state.seachString.toLowerCase();
+
+			if(seachString){
+				libraries = libraries.filter(function(item){
+					return item.indexOf(seachString) != -1;
+				})
+			}
+
+
+			var allLibraries = libraries.map(function(item){
+				return <LibraryComponent name={item}/>
+			})
+
+			return <div>
+				<input onChange={this.changeHandler}/>
+				<ul>
+					{allLibraries}
+				</ul>
+			</div>
+		}
+	}) 
+
+	var LibraryComponent = React.createClass({
+		render:function(){
+			return <li>{this.props.name}</li>
+		}
+	})
+
+	React.render(<SearchComponent/>, document.getElementById('myDiv'))
+</script>

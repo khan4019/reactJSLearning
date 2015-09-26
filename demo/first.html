@@ -1,0 +1,13 @@
+<script src="scripts/react.js"></script>
+<script src="scripts/JSXTransformer.js"></script>
+<div id="myDiv"></div>
+<script type="text/jsx">
+	
+	var MessageComponent = React.createClass({
+		render:function(){
+			return <h1>Hello NCDev</h1>
+		}
+	});
+
+	React.render(<MessageComponent/>, document.getElementById('myDiv'))
+</script>
