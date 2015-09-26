@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script src="scripts/react.js"></script>
+<script src="scripts/JSXTransformer.js"></script>
+<script src="scripts/d3.min.js"></script>
+<script src="scripts/react-d3.min.js"></script>
+<div class="container">
+	<div id="myDiv"></div>
+</div>
+<script type="text/jsx">
+
+	var BarChartComponent = React.createClass({
+		getInitialState:function(){
+			return{
+				barData:[
+			        { 
+			          "name": "Series A",
+			          "values": [
+			              { "x": 'something', "y":  91},
+			              {"x":'nothing', "y":63},
+			              { "x": 'something1', "y":  91},
+			              {"x":'nothing1', "y":63},
+			              { "x": 'something2', "y":  91},
+			              {"x":'nothing2', "y":63},
+			              { "x": 'something3', "y":  91},
+			              {"x":'nothing3', "y":63}
+			            ]
+			        }
+			      ]
+			}
+		},
+		render:function(){
+			return <rd3.BarChart data={this.state.barData}/>
+		}
+	})
+
+</script>

@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script src="scripts/react.js"></script>
+<script src="scripts/JSXTransformer.js"></script>
+<div class="container">
+	<div id="myDiv"></div>		
+</div>
+<script type="text/jsx">
+	
+	var MessageComponent = React.createClass({
+		render:function(){
+			return <div>
+				<h1 className="text-primary">Hello NCDev</h1>
+				<SubMessageComponent messageTo="David"/>
+				<SubMessageComponent messageTo="Beckham"/>
+				<SubMessageComponent/>
+			</div>	
+		}
+	});
+
+	var SubMessageComponent = React.createClass({
+		getDefaultProps:function(){
+			return {
+				messageTo:'Dude'
+			}
+		},
+		render:function(){
+			return <h4 className="text-danger">Good to see you, {this.props.messageTo}</h4>
+		}
+	})
+
+	React.render(<MessageComponent/>, document.getElementById('myDiv'))
+</script>

@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script src="scripts/react.js"></script>
+<script src="scripts/JSXTransformer.js"></script>
+<div class="container">
+	<div id="myDiv"></div>		
+</div>
+<script type="text/jsx">
+	var ClickComponent = React.createClass({
+		getInitialState:function(){
+			return {
+				count: 0
+			}
+		},
+		clickHandler:function(){
+			var newCount = this.state.count + 10;
+			this.setState({
+				count:newCount
+			})
+		},
+		render:function(){
+			return <div>
+				<h1>You have Clicked:{this.state.count}</h1>
+				<button className="btn btn-success" onMouseMove={this.clickHandler}>Click Me</button>
+			</div>
+		}
+	});
+
+	React.render(<ClickComponent/>, document.getElementById('myDiv'))
+</script>
